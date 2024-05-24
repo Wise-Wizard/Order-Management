@@ -2,6 +2,7 @@ syntax = "proto3";
 option go_package = "github.com/Wise-Wizard/Order-Management";
 service OrderService {
     rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) {};
+    rpc GetOrders(GetOrdersRequest) returns (GetOrdersResponse) {};
 }
 
 message Order {
@@ -21,10 +22,10 @@ message CreateOrderResponse {
     string status = 1;
 }
 
-message GetOrderRequest {
+message GetOrdersRequest {
     int32 customerID = 1;
 }
 
-message GetOrderResponse {
+message GetOrdersResponse {
     repeated Order orders = 1;
 }

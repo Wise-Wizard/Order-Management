@@ -4,6 +4,8 @@ import (
 	"log"
 	"net"
 
+	handler "github.com/Wise-Wizard/Order-Management/services/orders/handler/orders"
+	"github.com/Wise-Wizard/Order-Management/services/orders/service"
 	"google.golang.org/grpc"
 )
 
@@ -22,5 +24,9 @@ func (s *gRPCServer) Run() error {
 	}
 	gRPCServer := grpc.NewServer()
 	log.Println("gRPC server is running on port", s.addr)
+
+	// Register Our Services
+	orderService := service.NewOrderService()
+	handler.NewGRPCOrdersService(gRPCServer, orderService)
 	return gRPCServer.Serve(lis)
 }
