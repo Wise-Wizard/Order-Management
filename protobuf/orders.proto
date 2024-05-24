@@ -1,5 +1,5 @@
 syntax = "proto3";
-
+option go_package = "github.com/Wise-Wizard/Order-Management";
 service OrderService {
     rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) {};
 }
